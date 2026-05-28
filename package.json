@@ -4,7 +4,6 @@
   "scripts": {
     "======= Pour le dev ========": "========================",
     "dev": "tsx watch --env-file=.env index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
@@ -15,7 +14,11 @@
     "db:migrate:reset": "docker compose exec gamer-challenges-api npx prisma migrate reset --force",
     "db:migrate:dev": "docker compose exec gamer-challenges-api npx prisma migrate dev --name init",
     "db:generate": "docker compose exec gamer-challenges-api npx prisma generate",
-    "db:reinit": "npm run db:migrate:reset && npm run db:migrate:dev && npm run db:generate && npm run db:seed"
+    "db:reinit": "npm run db:migrate:reset && npm run db:migrate:dev && npm run db:generate && npm run db:seed",
+    "======= Pour les tests ========": "========================",
+    "test": "node --env-file=.env.test --experimental-vm-modules node_modules/.bin/jest",
+    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
@@ -24,14 +27,20 @@
     "@types/cookie-parser": "^1.4.9",
     "@types/express": "^5.0.3",
     "@types/express-xss-sanitizer": "^2.0.0",
+    "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/mocha": "^10.0.10",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.0.12",
+    "@types/supertest": "^7.2.0",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
     "@types/yamljs": "^0.2.34",
     "eslint": "^9.31.0",
+    "jest": "^30.4.2",
     "prisma": "^6.16.2",
+    "supertest": "^7.2.2",
+    "ts-jest": "^29.4.11",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.37.0"
