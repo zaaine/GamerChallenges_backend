@@ -1,6 +1,6 @@
 services:
   gamer-challenges-db:
-    image: postgres:latest
+    image: postgres:16
     container_name: gamer-challenges-db
     restart: always
     environment:
@@ -9,7 +9,7 @@ services:
       POSTGRES_DB: ${PG_DATABASE}
     volumes:
       - ./data:/docker-entrypoint-initdb.d
-      - ./pg-data:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${PG_USER} -d ${PG_DATABASE}"]
       interval: 5s
@@ -17,7 +17,18 @@ services:
       retries: 5
     networks:
       - gamerchallenge-network
-
+  gamer-challenges-db-test:
+    image: postgres:16
+    container_name: gamer-challenges-db-test
+    restart: always
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: gamer_challenges_test
+    ports:
+      - "5433:5432"
+    networks:
+      - gamerchallenge-network
   gamer-challenges-api:
     image: node:22-alpine
     container_name: gamer-challenges-api
