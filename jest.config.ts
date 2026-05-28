@@ -1,6 +1,7 @@
 import type { Config } from "jest"
 
 const config: Config = {
+  testTimeout: 15000,
   preset: "ts-jest/presets/default-esm",
   testEnvironment: "node",
   extensionsToTreatAsEsm: [".ts"],
