@@ -20,5 +20,5 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "types": ["node"],
   },
-  "exclude": ["**/*.test.ts", "**/*.spec.ts", "node_modules"]
+  "exclude": ["**/*.test.ts", "**/*.spec.ts", "jest.config.ts", "node_modules"]
 }
