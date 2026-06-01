@@ -18,6 +18,7 @@
     "strict": true /* Enable all strict type-checking options. */,
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
-    "types": ["jest", "node"]
-  }
+    "types": ["jest", "node"],
+  },
+  "exclude": ["**/*.test.ts", "**/*.spec.ts", "node_modules"]
 }
