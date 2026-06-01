@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-import { decodeJwt, getJwtSecret, generateAuthenticationTokens, generateAccessTokenOnly } from "./tokens"
+import { decodeJwt, getJwtSecret, generateAuthenticationTokens, generateAccessTokenOnly } from "./tokens.js"
 
 // On définit une clé secrète de test
 const TEST_SECRET = process.env.JWT_SECRET as string

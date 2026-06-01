@@ -10,3 +10,4 @@ pg-data/
 
 /logs
 coverage/
+dist/

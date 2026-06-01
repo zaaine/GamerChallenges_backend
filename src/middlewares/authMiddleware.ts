@@ -16,6 +16,7 @@ export interface JwtRequest extends Request {
 }
 interface VerifyTokenOptions {
   validityRequired?: boolean
+  ownerRequired?: boolean
 }
 export const verifyToken = ({
   validityRequired = true,

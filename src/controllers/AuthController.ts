@@ -57,7 +57,6 @@ export default class AuthController extends BaseController<User, "user_id"> {
   async register(req: Request, res: Response) {
     const { pseudo, email, password, avatar, confirm } =
       await registerSchema.parseAsync(req.body)
-
     if (password !== confirm) {
       return res
         .status(400)
@@ -184,12 +183,9 @@ export default class AuthController extends BaseController<User, "user_id"> {
 
 async function generateAndSetTokens(res: Response, user: User) {
   const { accessToken, refreshToken } = generateAuthenticationTokens(user)
-
   await replaceRefreshTokenInDatabase(refreshToken, user)
-
   setAccessTokenCookie(res, accessToken)
   setRefreshTokenCookie(res, refreshToken)
-
   return accessToken
 }
 

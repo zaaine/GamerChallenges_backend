@@ -18,7 +18,10 @@
     "======= Pour les tests ========": "========================",
     "test": "node --env-file=.env.test --experimental-vm-modules node_modules/.bin/jest",
     "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watch",
-    "test:coverage": "node --env-file=.env.test --experimental-vm-modules node_modules/.bin/jest --coverage"
+    "test:coverage": "node --env-file=.env.test --experimental-vm-modules node_modules/.bin/jest --coverage",
+    "==========Deploiement==========":"========",
+    "build": "npx prisma generate && tsc",
+    "start": "node dist/index.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
