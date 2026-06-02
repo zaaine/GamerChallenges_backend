@@ -206,7 +206,7 @@ function setAccessTokenCookie(res: Response, accessToken: Token) {
     httpOnly: true,
     maxAge: accessToken.expiresInMS,
     secure: config.server.secure,
-    sameSite: "lax",
+    sameSite: config.server.secure ? "none": "lax" ,
   })
 }
 
@@ -215,7 +215,7 @@ function setRefreshTokenCookie(res: Response, refreshToken: Token) {
     httpOnly: true,
     maxAge: refreshToken.expiresInMS,
     secure: config.server.secure,
-    sameSite: "lax",
+    sameSite: config.server.secure ? "none": "lax" ,
     path: "/api/auth/",
   })
 }
@@ -229,13 +229,13 @@ async function deleteTokenAndCookies(req: Request, res: Response) {
   res.clearCookie("accessToken", {
     httpOnly: true,
     secure: config.server.secure,
-    sameSite: "lax",
+    sameSite: config.server.secure ? "none": "lax" ,
   })
 
   res.clearCookie("refreshToken", {
     httpOnly: true,
     secure: config.server.secure,
-    sameSite: "lax",
+    sameSite: config.server.secure ? "none": "lax" ,
     path: "/api/auth/",
   })
 }
